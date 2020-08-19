@@ -3,7 +3,7 @@ import { BaseDatabase } from "./BaseDatabase";
 
 export class UserDatabase extends BaseDatabase{
   
-  private static TABLE_NAME = "aula55_user";
+  private static TABLE_NAME = "cookenu_user";
 
   public async createUser(
     id: string,
