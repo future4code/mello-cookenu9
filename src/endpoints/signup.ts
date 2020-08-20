@@ -4,7 +4,6 @@ import { UserDatabase } from "../data/UserDatabase"
 import { Authenticator } from "../services/Authenticator";
 import { HashManager } from "../services/HashManager";
 
-
 export default async function Sigunp(req: Request, res: Response){
     try {
       // Item b. Validação do email

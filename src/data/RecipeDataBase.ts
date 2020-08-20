@@ -1,22 +1,24 @@
-import knex from 'knex'
-import Knex from 'knex'
 import { BaseDatabase } from './BaseDatabase'
+
+interface Recipe{
+    id: string,
+    title: string,
+    description: string,
+    created_at: Date
+}
 
 export class RecipeDataBase extends BaseDatabase{
     private static TABLE_NAME = 'cookenu_recipe' 
 
     public async createRecipe(
-        id: string,
-        title: string,
-        description: string,
-        created_At: string
+       recipe: Recipe
     ): Promise<void> {
         await this.getConnection()
           .insert({
-            id,
-            title,
-            description,
-            created_At,
+            id: recipe.id,
+            title: recipe.title,
+            description: recipe.description,
+            created_at: recipe.created_at,
           })
           .into(RecipeDataBase.TABLE_NAME);
         }

@@ -15,7 +15,7 @@ export default async function GetProfileUser (req: Request, res: Response){
       //aqui pega todos os valores do banco mesmo
       const userDb = new UserDatabase();
       const user = await userDb.getUserById(authenticationData.id);
-  
+      
       res.status(200).send({
         id: user.id,
         email: user.email,
@@ -24,7 +24,8 @@ export default async function GetProfileUser (req: Request, res: Response){
       res.status(400).send({
         message: err.message,
       });
-    }finally{
+    }
+    //finally{
         //await BaseDatabase.destroyConnection()
-    }   
+    //}   
   };
