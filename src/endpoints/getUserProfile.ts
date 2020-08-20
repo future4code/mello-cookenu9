@@ -26,7 +26,5 @@ export default async function GetProfileUser (req: Request, res: Response){
       });
     }finally{
         //await BaseDatabase.destroyConnection()
-    }
-
-    
+    }   
   };
