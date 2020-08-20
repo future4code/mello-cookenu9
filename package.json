@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node-dev ./src/index.ts",
+    "user": "ts-node-dev ./data/UserDatabase.ts",
     "build": "tsc"
   },
   "author": "",

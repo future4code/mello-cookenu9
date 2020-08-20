@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
-import { IdGenerator } from "../services/IdGenerator"
-import { UserDatabase } from "../data/UserDatabase"
+import { IdGenerator } from "../services/IdGenerator";
+import { UserDatabase } from "../data/UserDatabase";
 import { Authenticator } from "../services/Authenticator";
 import { HashManager } from "../services/HashManager";
 
-export default async function Sigunp(req: Request, res: Response){
+export default async function Signup(req: Request, res: Response){
     try {
       // Item b. Validação do email
       if (!req.body.email || req.body.email.indexOf("@") === -1) {
@@ -50,5 +50,4 @@ export default async function Sigunp(req: Request, res: Response){
       res.status(400).send({
         message: err.message,
       });
-    }
-  };
+
