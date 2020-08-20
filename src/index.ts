@@ -1,17 +1,19 @@
-import express, { Request, Response } from "express";
+import express from "express";
 import dotenv from "dotenv";
 import { AddressInfo } from "net";
-import Signup from './endpoints/signup';
-import Login from './endpoints/login';
-import GetUserProfile from './endpoints/getUserProfile'
+import Signup from "./endpoints/signup";
+import Login from "./endpoints/login";
+import GetUserProfile from "./endpoints/getUserProfile";
+import GetUserById from "./endpoints/GetUserById";
 
 dotenv.config();
 const app = express();
 app.use(express.json());
 
-app.post("/user/signup",Signup)
-app.post("/user/login", Login)
-app.get("/user/profile", GetUserProfile)
+app.post("/user/signup", Signup);
+app.post("/user/login", Login);
+app.get("/user/profile", GetUserProfile);
+app.get("/user/:id", GetUserById);
 
 const server = app.listen(process.env.PORT || 3003, () => {
   if (server) {
