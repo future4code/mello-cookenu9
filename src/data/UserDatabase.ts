@@ -1,8 +1,7 @@
 import knex from "knex";
 import { BaseDatabase } from "./BaseDatabase";
 
-export class UserDatabase extends BaseDatabase{
-  
+export class UserDatabase extends BaseDatabase {
   private static TABLE_NAME = "cookenu_user";
 
   public async createUser(
