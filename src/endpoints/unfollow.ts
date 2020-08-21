@@ -1,27 +1,40 @@
-// import { Request, Response } from "express";
-// import { UserDatabase } from "../data/UserDatabase";
-// import { Authenticator } from "../services/Authenticator";
-// import { BaseDatabase } from "../data/BaseDatabase";
+import { Request, Response } from "express";
+import { UserDatabase } from "../data/UserDatabase";
+import { Authenticator } from "../services/Authenticator";
+import { BaseDatabase } from "../data/BaseDatabase";
 
-// export default async function UnFollow(req: Request, res: Response) {
-//   try {
-//     const token = req.headers.authorization as string;
-//     const autenticator = new Authenticator();
+export default async function UnFollow(req: Request, res: Response) {
+  try {
+    // token vindo do header, do postman. Precisa ser string
+    const token = req.headers.authorization as string;
 
-//     const autenticatorData = autenticator.getData(token);
+    // Item de verificação
+    if (!token) {
+      throw new Error("Token inválido");
+    }
 
-//     const unfollowedId = req.body.unfollowedId as string;
+    const autenticator = new Authenticator();
 
-//     await new UserDatabase().unfollow(unfollowedId);
+    const autenticatorData = autenticator.getData(token);
 
-//     res.status(200).send({
-//       message: "deixou de seguir",
-//     });
-//   } catch (err) {
-//     res.status(400).send({
-//       message: err.message,
-//     });
-//   } finally {
-//     await BaseDatabase.destroyConnection();
-//   }
-// }
+    //recebendo valores do body (postman)
+    const unfollowedId = req.body.unfollowedId as string;
+
+    // Item de verificação
+    if (!unfollowedId) {
+      throw new Error("usuário inválido");
+    }
+
+    await new UserDatabase().unfollow(unfollowedId);
+
+    res.status(200).send({
+      message: "Unfollowed successfully",
+    });
+  } catch (err) {
+    res.status(400).send({
+      message: err.message,
+    });
+  } finally {
+    await BaseDatabase.destroyConnection();
+  }
+}

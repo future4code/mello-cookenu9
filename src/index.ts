@@ -9,7 +9,7 @@ import CreateRecipe from "./endpoints/createRecipe";
 import GetRecipeById from "./endpoints/getRecipe";
 import GetUserById from "./endpoints/getUserById";
 import Follow from "./endpoints/follow";
-//import UnFollow from "./endpoints/unfollow";
+import UnFollow from "./endpoints/unfollow";
 
 dotenv.config();
 const app = express();
@@ -19,7 +19,7 @@ app.post("/user/signup", Signup);
 app.post("/user/login", Login);
 app.get("/user/profile", GetUserProfile);
 app.post("/user/follow", Follow);
-//app.post("/user/unfollow", UnFollow);
+app.post("/user/unfollow", UnFollow);
 
 app.get("/user/:id", GetUserById);
 

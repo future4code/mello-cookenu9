@@ -44,10 +44,10 @@ export class UserDatabase extends BaseDatabase {
       .into("cookenu_followers");
   }
 
-  // public async unfollow(unfollowedId: string): Promise<void> {
-  //   await this.getConnection().raw(`
-  //   DELETE from cookenu_followers
-  //   WHERE user_followed_id = "${unfollowedId}"
-  //   `);
-  // }
+  public async unfollow(unfollowedId: string): Promise<void> {
+    await this.getConnection().raw(`
+    DELETE from cookenu_followers
+    WHERE user_followed_id = "${unfollowedId}"
+    `);
+  }
 }
