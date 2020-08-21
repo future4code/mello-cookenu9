@@ -2,7 +2,7 @@ import knex from "knex";
 import { BaseDatabase } from "./BaseDatabase";
 
 export class UserDatabase extends BaseDatabase {
-  private static TABLE_NAME = "cookenu_user";
+  public static TABLE_NAME = "cookenu_user";
 
   public async createUser(
     id: string,
@@ -44,10 +44,10 @@ export class UserDatabase extends BaseDatabase {
       .into("cookenu_followers");
   }
 
-  // public async unfollow(unfollowedId: string): Promise<void> {
-  //   await this.getConnection().raw(`
-  //   DELETE from cookenu_followers
-  //   WHERE user_followed_id = "${unfollowedId}"
-  //   `);
-  // }
+   public async unfollow(unfollowedId: string): Promise<void> {
+     await this.getConnection().raw(`
+     DELETE from cookenu_followers
+     WHERE user_followed_id = "${unfollowedId}"
+     `);
+   }
 }
