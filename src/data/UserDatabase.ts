@@ -37,4 +37,17 @@ export class UserDatabase extends BaseDatabase {
 
     return result[0];
   }
+
+  public async follow(followId: string, followedId: string): Promise<void> {
+    await this.getConnection()
+      .insert({ user_follow_id: followId, user_followed_id: followedId })
+      .into("cookenu_followers");
+  }
+
+  // public async unfollow(unfollowedId: string): Promise<void> {
+  //   await this.getConnection().raw(`
+  //   DELETE from cookenu_followers
+  //   WHERE user_followed_id = "${unfollowedId}"
+  //   `);
+  // }
 }
