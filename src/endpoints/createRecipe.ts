@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { IdGenerator } from "../services/IdGenerator";
-import RecipeDataBase from "../data/RecipeDataBase";
+import RecipeDataBase from "../data/RecipeDataBase"
 
 export default async function Login(req: Request, res: Response) {
   try {

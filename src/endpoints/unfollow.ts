@@ -1,3 +1,4 @@
+
 import { Request, Response } from "express";
 import { UserDatabase } from "../data/UserDatabase";
 import { Authenticator } from "../services/Authenticator";
@@ -38,3 +39,4 @@ export default async function UnFollow(req: Request, res: Response) {
     await BaseDatabase.destroyConnection();
   }
 }
+
