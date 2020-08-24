@@ -1,7 +1,6 @@
 ### Cookenu
 
 **O que funciona?**
-Endpoints:
 <p> :heavy_check_mark: Signup </p>
 <p> :heavy_check_mark: Login </p>
 <p> :heavy_check_mark: Pegar próprio perfil</p>
