@@ -12,7 +12,7 @@ export default async function Login(req: Request, res: Response) {
     if (!token) {
       throw new Error("Token inválido");
     }
-    //gera id da receita
+
     const idGenerator = new IdGenerator();
     const id = idGenerator.generate();
 
@@ -22,9 +22,7 @@ export default async function Login(req: Request, res: Response) {
       description: req.body.description,
       created_at: new Date(),
     };
-
-    console.log(recipeData);
-    //cria a receita
+    
     const recipeDb = new RecipeDataBase();
     await recipeDb.createRecipe(recipeData);
 

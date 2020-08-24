@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { UserDatabase } from "../data/UserDatabase";
 import { Authenticator } from "../services/Authenticator";
+import { BaseDatabase } from "../data/BaseDatabase";
 
 export default async function GetUserById(req: Request, res: Response) {
   try {
@@ -23,6 +24,6 @@ export default async function GetUserById(req: Request, res: Response) {
       message: err.message,
     });
   } finally {
-    //await BaseDatabase.destroyConnection()
+     await BaseDatabase.destroyConnection()
   }
 }

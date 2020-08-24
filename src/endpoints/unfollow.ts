@@ -6,10 +6,13 @@
  export default async function UnFollow(req: Request, res: Response) {
     try {
         const token = req.headers.authorization as string;
+
         const autenticator = new Authenticator();
         const autenticatorData = autenticator.getData(token);
+
         const unfollowedId = req.body.unfollowedId as string;
         await new UserDatabase().unfollow(unfollowedId);
+        
         res.status(200).send({
           message: "deixou de seguir",
         });
