@@ -1,3 +1,4 @@
+
  import { Request, Response } from "express";
  import { UserDatabase } from "../data/UserDatabase";
  import { Authenticator } from "../services/Authenticator";
@@ -11,6 +12,10 @@
         const autenticatorData = autenticator.getData(token);
 
         const unfollowedId = req.body.unfollowedId as string;
+        
+        if (!unfollowedId) {
+           throw new Error("usuário inválido");
+        }
         await new UserDatabase().unfollow(unfollowedId);
         
         res.status(200).send({
@@ -22,5 +27,4 @@
         });
     }finally {
         await BaseDatabase.destroyConnection();
-    }
- }
+
