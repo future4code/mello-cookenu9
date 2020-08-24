@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import moment from "moment";
 import RecipeDataBase from "../data/RecipeDataBase";
+import { BaseDatabase } from "../data/BaseDatabase";
 
 export default async function GetRecipeById(req: Request, res: Response) {
   try {
@@ -25,8 +26,7 @@ export default async function GetRecipeById(req: Request, res: Response) {
     res.status(400).send({
       message: err.message,
     });
-  }
-  //  finally{
-  //await BaseDatabase.destroyConnection()
-  //  }
+  }finally{
+    await BaseDatabase.destroyConnection()
+    }
 }
